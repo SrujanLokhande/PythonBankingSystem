@@ -1,0 +1,62 @@
+[
+    {
+        "admin_username": "admin",
+        "action": "Login",
+        "details": "Admin logged into the system",
+        "timestamp": "2024-10-23 12:58:39"
+    },
+    {
+        "admin_username": "admin",
+        "action": "Login",
+        "details": "Admin logged into the system",
+        "timestamp": "2024-10-23 12:59:28"
+    },
+    {
+        "admin_username": "admin",
+        "action": "Login",
+        "details": "Admin logged into the system",
+        "timestamp": "2024-10-23 12:59:56"
+    },
+    {
+        "admin_username": "admin",
+        "action": "Login",
+        "details": "Admin logged into the system",
+        "timestamp": "2024-10-23 13:00:34"
+    },
+    {
+        "admin_username": "admin",
+        "action": "Login",
+        "details": "Admin logged into the system",
+        "timestamp": "2024-10-23 13:01:25"
+    },
+    {
+        "admin_username": "admin",
+        "action": "Login",
+        "details": "Admin logged into the system",
+        "timestamp": "2024-10-23 13:12:11"
+    },
+    {
+        "admin_username": "admin",
+        "action": "Remove User",
+        "details": "Removed user account 1000 (Srujan)",
+        "timestamp": "2024-10-23 13:12:21"
+    },
+    {
+        "admin_username": "admin",
+        "action": "Remove User",
+        "details": "Removed user account 1001 (Rushvi)",
+        "timestamp": "2024-10-23 13:12:25"
+    },
+    {
+        "admin_username": "admin",
+        "action": "Login",
+        "details": "Admin logged into the system",
+        "timestamp": "2024-10-23 13:13:08"
+    },
+    {
+        "admin_username": "admin",
+        "action": "Login",
+        "details": "Admin logged into the system",
+        "timestamp": "2024-10-24 07:09:59"
+    }
+]

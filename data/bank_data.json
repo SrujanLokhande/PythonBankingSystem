@@ -1,0 +1,28 @@
+{
+    "1000": {
+        "account_number": "1000",
+        "name": "Srujan",
+        "password": "srujan",
+        "balance": 3657.0,
+        "transactions": [
+            {
+                "type": "deposit",
+                "amount": 3434.0,
+                "date": "2024-10-23 13:12:56",
+                "balance": 3434.0
+            },
+            {
+                "type": "deposit",
+                "amount": 345.0,
+                "date": "2024-10-23 13:12:59",
+                "balance": 3779.0
+            },
+            {
+                "type": "withdrawal",
+                "amount": 122.0,
+                "date": "2024-10-23 13:13:01",
+                "balance": 3657.0
+            }
+        ]
+    }
+}
