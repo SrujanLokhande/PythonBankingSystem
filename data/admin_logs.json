@@ -58,5 +58,11 @@
         "action": "Login",
         "details": "Admin logged into the system",
         "timestamp": "2024-10-24 07:09:59"
+    },
+    {
+        "admin_username": "admin",
+        "action": "Login",
+        "details": "Admin logged into the system",
+        "timestamp": "2024-10-25 10:56:09"
     }
 ]
