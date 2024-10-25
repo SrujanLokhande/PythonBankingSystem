@@ -1,4 +1,4 @@
-#Banking System
+Banking System
 
 A Python-based banking system with both administrator and client interfaces. The system provides secure account management, transaction handling, and administrative controls through a graphical user interface.
 Features
