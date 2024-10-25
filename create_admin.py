@@ -1,4 +1,4 @@
-# create_admin.py (New file for initial admin setup)
+# create_admin.py (For initial admin setup)
 import json
 import os
 from getpass import getpass

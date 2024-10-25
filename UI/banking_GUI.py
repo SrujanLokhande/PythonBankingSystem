@@ -2,7 +2,29 @@ import tkinter as tk
 from tkinter import messagebox, ttk
 
 class BankingGUI:
+    """
+    Graphical user interface for client banking operations.
+    
+    This class manages all client-side GUI elements and interactions,
+    including login, registration, and banking operations.
+    
+    Attributes:
+        root (tk.Tk): Main window of the application
+        bank (BankingSystem): Reference to the banking system
+        show_user_type_screen (function): Callback to return to type selection
+        current_account (BankAccount): Currently logged-in account
+    """
+
     def __init__(self, root, banking_system, show_user_type_screen):
+        """
+        Initialize the banking GUI.
+        
+        Args:
+            root (tk.Tk): Main window of the application
+            banking_system (BankingSystem): Reference to the banking system
+            show_user_type_screen (function): Callback to show type selection
+        """
+
         self.root = root
         self.bank = banking_system
         self.show_user_type_screen = show_user_type_screen
@@ -13,19 +35,24 @@ class BankingGUI:
         self.create_main_frame()
 
     def create_login_frame(self):
+        """Create and configure the login frame with all its widgets."""
         self.login_frame = ttk.Frame(self.root, padding="20")
-        
+
+        # Add heading
         ttk.Label(self.login_frame, text="Client Login", 
                  font=("Helvetica", 12, "bold")).grid(row=0, column=0, columnspan=2, pady=10)
         
+        # Account number entry
         ttk.Label(self.login_frame, text="Account Number:").grid(row=1, column=0, pady=5)
         self.login_account_entry = ttk.Entry(self.login_frame)
         self.login_account_entry.grid(row=1, column=1, pady=5)
         
+        # Password entry
         ttk.Label(self.login_frame, text="Password:").grid(row=2, column=0, pady=5)
         self.login_password_entry = ttk.Entry(self.login_frame, show="*")
         self.login_password_entry.grid(row=2, column=1, pady=5)
         
+        # Buttons
         ttk.Button(self.login_frame, text="Login", 
                   command=self.login).grid(row=3, column=0, pady=10)
         ttk.Button(self.login_frame, text="Register", 
@@ -35,6 +62,7 @@ class BankingGUI:
                   command=self.show_user_type_screen).grid(row=4, column=0, columnspan=2)
 
     def create_register_frame(self):
+        """Create and configure the registration frame with all its widgets."""
         self.register_frame = ttk.Frame(self.root, padding="20")
         
         ttk.Label(self.register_frame, text="Register New Account", 
@@ -54,6 +82,7 @@ class BankingGUI:
                   command=self.show_login_frame).grid(row=4, column=0, columnspan=2)
 
     def create_main_frame(self):
+        """Create and configure the main frame with all its widgets."""
         self.main_frame = ttk.Frame(self.root, padding="20")
         
         self.balance_label = ttk.Label(self.main_frame, text="", 
@@ -101,28 +130,36 @@ class BankingGUI:
                   command=self.logout).grid(row=5, column=0, columnspan=2, pady=10)
 
     def show_login_frame(self):
+        """Show the login frame and hide the main frame."""
         self.register_frame.grid_remove()
         self.main_frame.grid_remove()
         self.login_frame.grid()
 
     def show_register_frame(self):
+        """Show the register frame and hide the login frame."""
         self.login_frame.grid_remove()
         self.main_frame.grid_remove()
         self.register_frame.grid()
 
     def show_main_frame(self):
+        """Show the main frame and hide the register frame."""
         self.login_frame.grid_remove()
         self.register_frame.grid_remove()
         self.main_frame.grid()
 
     def update_balance_label(self):
+        """Update the balance label with the current balance."""
         self.balance_label.config(
             text=f"Current Balance: ${self.current_account.balance:.2f}")
 
     def update_transaction_history(self):
+        """Update the transaction history treeview with the current transactions."""
+
+        # Clear existing entries
         for item in self.transaction_tree.get_children():
             self.transaction_tree.delete(item)
         
+        # Add all transactions
         for transaction in self.current_account.transactions:
             self.transaction_tree.insert("", "end", values=(
                 transaction['type'],
@@ -132,6 +169,13 @@ class BankingGUI:
             ))
 
     def login(self):
+        """
+        Handle the login process.
+        
+        Validates user credentials and logs them into the system if correct.
+        Shows appropriate error messages for invalid credentials.
+        """
+
         account_number = self.login_account_entry.get()
         password = self.login_password_entry.get()
         
@@ -145,6 +189,13 @@ class BankingGUI:
             messagebox.showerror("Error", "Invalid account number or password")
 
     def register(self):
+        """
+        Handle the registration process.
+        
+        Creates a new account if all fields are filled and shows
+        the account number to the user.
+        """
+
         name = self.register_name_entry.get()
         password = self.register_password_entry.get()
         
@@ -159,6 +210,13 @@ class BankingGUI:
             messagebox.showerror("Error", "Please fill in all fields")
 
     def deposit(self):
+        """
+        Handle the deposit process.
+        
+        Validates the amount and updates the account balance if valid.
+        Shows appropriate error messages for invalid inputs.
+        """
+
         try:
             amount = float(self.amount_entry.get())
             if amount <= 0:
@@ -173,6 +231,14 @@ class BankingGUI:
             messagebox.showerror("Error", "Please enter a valid positive amount")
 
     def withdraw(self):
+        """
+        Handle the withdrawal process.
+        
+        Validates the amount and updates the account balance if valid.
+        Shows appropriate error messages for invalid inputs or insufficient funds.
+
+        """
+
         try:
             amount = float(self.amount_entry.get())
             if amount <= 0:
@@ -189,6 +255,12 @@ class BankingGUI:
             messagebox.showerror("Error", "Please enter a valid positive amount")
 
     def logout(self):
+        """
+        Handle the logout process.
+        
+        Clears current account information and returns to the login screen.
+        """
+        
         self.current_account = None
         self.login_account_entry.delete(0, tk.END)
         self.login_password_entry.delete(0, tk.END)
